@@ -129,21 +129,43 @@ $(document).ready(function () {
 
 
 <p>Titanic is avaliable in your workspace</p>
-<p>1 - Check the structure of titanic</p>
+<div id="check-the-structure-of-titanic" class="section level1">
+<h1>1 - Check the structure of titanic</h1>
+<p>Have a look at the str() of the titanic dataset, which has been loaded into your workspace. Looks like the data is pretty tidy!</p>
 <pre><code>str(titanic)</code></pre>
-<p>2 - Use ggplot() for the first instruction</p>
+</div>
+<div id="use-ggplot-for-the-first-instruction" class="section level1">
+<h1>2 - Use ggplot() for the first instruction</h1>
+<p>Plot the distribution of sexes within the classes of the ship.</p>
+<ul>
+<li>Use ggplot() with the data layer set to titanic.</li>
+<li>Map Pclass onto the x axis, Sex onto fill and draw a dodged bar plot using geom_bar(), i.e. set the geom position to “dodge”.</li>
+</ul>
 <pre><code>ggplot(titanic, aes(x = Pclass, fill = Sex)) +
   geom_bar(position = &quot;dodge&quot;)</code></pre>
-<p>3 - Plot 2, add facet_grid() layer</p>
+</div>
+<div id="plot-2-add-facet_grid-layer" class="section level1">
+<h1>3 - Plot 2, add facet_grid() layer</h1>
+<p>These bar plots won’t help you estimate your chances of survival. Copy the previous bar plot, but this time add a facet_grid() layer: . ~ Survived.</p>
 <pre><code>ggplot(titanic, aes(x = Pclass, fill = Sex)) +
   geom_bar(position = &quot;dodge&quot;) +
   facet_grid(.~Survived)</code></pre>
-<p>4 - Define an object for position jitterdodge, to use below</p>
+</div>
+<div id="define-an-object-for-position-jitterdodge-to-use-below" class="section level1">
+<h1>4 - Define an object for position jitterdodge, to use below</h1>
 <pre><code>posn.jd &lt;- position_jitterdodge(0.5, 0, 0.6)</code></pre>
-<p>5 - Plot 3, but use the position object from instruction 4</p>
+</div>
+<div id="plot-3-but-use-the-position-object-from-instruction-4" class="section level1">
+<h1>5 - Plot 3, but use the position object from instruction 4</h1>
+<ul>
+<li>Take plot 3 and add a mapping of Age onto the y aesthetic.</li>
+<li>Change geom_bar() to geom_point() and set its attributes size = 3, alpha = 0.5 and position = posn.jd.</li>
+<li>Make sure that Sex is mapped onto color instead of fill to correctly color the scatter plots.</li>
+</ul>
 <pre><code>ggplot(titanic, aes(x = Pclass, y=Age, col = Sex)) +
   geom_point(size=3, alpha=0.5, position = posn.jd) +
   facet_grid(.~Survived)</code></pre>
+</div>
 
 
 
